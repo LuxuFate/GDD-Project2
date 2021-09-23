@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Cached References
+    private EnemyController[] cr_Enemies;
+    #endregion
+
+    #region Attacks
+    private AttackInfo[] attacks;
+    #endregion
+
     #region Movement_variables
     public float movespeed;
     float x_input;
@@ -37,6 +45,7 @@ public class PlayerController : MonoBehaviour
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
         Move();
+        Attack();
     }
     #endregion
 
@@ -64,12 +73,18 @@ public class PlayerController : MonoBehaviour
     #region Attack_functions
     private void Attack(){
         attackTimer = attackspeed;
-        //StartCoroutine(AttackRoutine());
+        foreach(AttackInfo attack in attacks) {
+            if (attack.Cooldown == 0) {
+                StartCoroutine(AttackRoutine(attack));
+            }
+        }
     }
 
-    //IEnumerator AttackRoutine(){
-        //Arrows keys to shoot
-    //}
+    IEnumerator AttackRoutine(AttackInfo attack){
+        //TODO: Decrease enemy health for each enemy
+        //TODO: 
+        yield return null;
+    }
 
     #endregion
 
