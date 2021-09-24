@@ -15,8 +15,13 @@ public class RelicController : MonoBehaviour
         c_Health = m_MaxHealth;
     }
 
-    void OnCollisionEnter() {
-
+    void OnTriggerEnter2D(Collider2D coll) {
+        if (c_Health <= 0) {
+            if (coll.CompareTag("Enemy")){
+                GameObject gm = GameObject.FindWithTag("GameController");
+                gm.GetComponent<GameManager>().LoseGame();
+            } 
+        }
     }
     
 }
