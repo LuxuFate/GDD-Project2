@@ -20,9 +20,19 @@ public class EnemyController : MonoBehaviour
     public float Damage;
     #endregion
 
+    [SerializeField]
+    [Tooltip("Max Health")]
+    private float m_MaxHealth;
+
+    #region Private Variables
+    private float c_Health;
+    #endregion
+
     #region Unity_functions
     private void Awake(){
     	EnemyRB = GetComponent<Rigidbody2D>();
+        c_Health = m_MaxHealth;
+        relic = GameObject.FindGameObjectsWithTag("Relic")[0].transform;
     }
     private void Update(){
     	if(relic == null) {
@@ -50,6 +60,17 @@ public class EnemyController : MonoBehaviour
     // 	Die();
     // }
     // #endregion
+
+    #region Health methods
+    public void DecreaseHealth(float amount) {
+        c_Health -= amount;
+        if (c_Health <= 0) {
+            Die();
+            // play animations?
+        }
+    }
+
+    #endregion
 
     private void Die(){
         Destroy(this.gameObject);

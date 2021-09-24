@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Attacks
-    private AttackInfo[] attacks;
+    [SerializeField]
+    [Tooltip("Attacks for this player")]
+    private PlayerAttackInfo[] attacks;
     #endregion
 
     #region Movement_variables
@@ -40,6 +42,10 @@ public class PlayerController : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         attackTimer = 0;
         currHealth = maxHealth;
+        foreach (PlayerAttackInfo attack in attacks) {
+            attack.ResetDuration();
+            attack.Cooldown = 0;
+        }
     }
     private void Update(){
         x_input = Input.GetAxisRaw("Horizontal");
@@ -73,17 +79,30 @@ public class PlayerController : MonoBehaviour
     #region Attack_functions
     private void Attack(){
         attackTimer = attackspeed;
-        foreach(AttackInfo attack in attacks) {
-            if (attack.Cooldown == 0) {
-                StartCoroutine(AttackRoutine(attack));
+        foreach(PlayerAttackInfo attack in attacks) {
+            if (Input.GetButton(attack.Button)) {
+                if (attack.Cooldown <= 0) {
+                    StartCoroutine(AttackRoutine(attack));
+                    attack.ResetCooldown();
+                    Debug.Log(attack.Cooldown);
+                    break;
+                } else {
+                    attack.Cooldown -= Time.deltaTime;
+                }
             }
         }
     }
 
-    IEnumerator AttackRoutine(AttackInfo attack){
+    IEnumerator AttackRoutine(PlayerAttackInfo attack){
         //TODO: Decrease enemy health for each enemy
         //TODO: 
-        yield return null;
+        Debug.Log("attacking");
+        Debug.Log(attack.AttackName);
+        Debug.Log(attack.Duration);
+        GameObject go = Instantiate(attack.AbilityGO, transform.forward * attack.Offset.z + transform.right * attack.Offset.y + transform.up * attack.Offset.x, Quaternion.identity); //instantiates the attack
+        yield return new WaitForSeconds(attack.Duration);
+        Destroy(go);
+        yield return new WaitForSeconds(attack.Cooldown - attack.Duration);
     }
 
     #endregion
