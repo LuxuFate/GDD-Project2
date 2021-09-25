@@ -5,7 +5,9 @@ using UnityEngine;
 public class Lazer : AttackInfo
 {
     // Start is called before the first frame update
-
+    void Awake() {
+        cc_PS = GetComponent<ParticleSystem>();
+    }
     void Update() {
         Use(transform.position);
     }
@@ -19,6 +21,7 @@ public class Lazer : AttackInfo
                 k.collider.GetComponent<EnemyController>().DecreaseHealth(Damage);
             }
         }
-
+        var emitterShape = cc_PS.shape;
+        emitterShape.length = n.magnitude;
     }
 }

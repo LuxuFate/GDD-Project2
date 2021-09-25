@@ -13,5 +13,7 @@ public abstract class AttackInfo : MonoBehaviour
         }
     }
 
+    public ParticleSystem cc_PS;
+
     public abstract void Use(Vector3 spawnPos);
 }
