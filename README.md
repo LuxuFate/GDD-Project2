@@ -2,8 +2,8 @@
 
 Instructions to play:
 
-WASD - move the golem
+WASD - Move the golem
 
-Left Click - explode men with telepathy and particlesystem
+Left Click - Explode men with telepathy and particle system
 
-Right Click - groundpound attack with AOE
+Right Click - Groundpound attack with AOE
