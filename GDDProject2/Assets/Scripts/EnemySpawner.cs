@@ -18,11 +18,16 @@ public class EnemySpawner : MonoBehaviour
     #endregion
 
     #region private Variables
+    public int m_NumberKilled;
+    #endregion
 
+    #region Cached Foreign
+    private GameObject cr_GM;
     #endregion
 
     #region Initialization
     private void Awake() {
+        cr_GM = GameObject.FindGameObjectWithTag("GameController");
         StartSpawning();
     }
     #endregion
@@ -36,6 +41,9 @@ public class EnemySpawner : MonoBehaviour
     }
     private IEnumerator Spawn(int enemyID)
     {
+            if (m_NumberKilled >= 50) {
+                cr_GM.GetComponent<GameManager>().WinGame();
+            }
             EnemySpawnInfo info = m_Enemies[enemyID];
             int i = 0;
             bool alwaysSpawn = false;
@@ -76,6 +84,10 @@ public class EnemySpawner : MonoBehaviour
                     i++;
                 }
             }
+    }
+
+    public void kills() {
+        m_NumberKilled += 1;
     }
     #endregion
 }

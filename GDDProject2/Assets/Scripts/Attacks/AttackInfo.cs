@@ -12,8 +12,18 @@ public abstract class AttackInfo : MonoBehaviour
             return m_Damage;
         }
     }
-
-    public ParticleSystem cc_PS;
+    [SerializeField]
+    [Tooltip("duration of the fire")]
+    private float m_fireDuration;
+    
+    public float FireDuration {
+        get {
+            return m_fireDuration;
+        }
+    }
+    [SerializeField]
+    [Tooltip("fire to spawn")]
+    protected GameObject fire;
 
     public abstract void Use(Vector3 spawnPos);
 }

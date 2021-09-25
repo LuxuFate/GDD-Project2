@@ -20,6 +20,10 @@ public class EnemyController : MonoBehaviour
     public float Damage;
     #endregion
 
+    #region Cached Foreign
+    private GameObject cr_Spawner;
+    #endregion
+
     [SerializeField]
     [Tooltip("Max Health")]
     private float m_MaxHealth;
@@ -33,6 +37,7 @@ public class EnemyController : MonoBehaviour
     	EnemyRB = GetComponent<Rigidbody2D>();
         c_Health = m_MaxHealth;
         relic = GameObject.FindGameObjectsWithTag("Relic")[0].transform;
+        cr_Spawner = GameObject.FindGameObjectWithTag("Spawner");
     }
     private void Update(){
     	if(relic == null) {
@@ -62,6 +67,7 @@ public class EnemyController : MonoBehaviour
         c_Health -= amount;
         Debug.Log("Decreasing health");
         if (c_Health <= 0) {
+            cr_Spawner.GetComponent<EnemySpawner>().kills();
             Die();
         }
     }
