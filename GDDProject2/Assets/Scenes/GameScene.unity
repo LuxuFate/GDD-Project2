@@ -601,6 +601,7 @@ GameObject:
   - component: {fileID: 811400195}
   - component: {fileID: 811400194}
   - component: {fileID: 811400197}
+  - component: {fileID: 811400198}
   m_Layer: 0
   m_Name: Relic
   m_TagString: Relic
@@ -713,6 +714,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxHealth: 5
+--- !u!61 &811400198
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811400193}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.6, y: 4.5}
+    newSize: {x: 3.6, y: 4.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.6, y: 4.5}
+  m_EdgeRadius: 0
 --- !u!1 &1069334502
 GameObject:
   m_ObjectHideFlags: 0
