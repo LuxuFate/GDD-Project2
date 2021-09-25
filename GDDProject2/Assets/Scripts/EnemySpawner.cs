@@ -15,6 +15,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     [Tooltip("A list of all enemies that can be spawned and their information")]
     private EnemySpawnInfo[] m_Enemies;
+    private bool SpawningDone;
+    private EnemySpawnInfo lastEnemy;
     #endregion
 
     #region private Variables
@@ -30,13 +32,22 @@ public class EnemySpawner : MonoBehaviour
         cr_GM = GameObject.FindGameObjectWithTag("GameController");
         StartSpawning();
     }
+private void Update() {
+        Debug.Log(lastEnemy.EnemyGO);
+        if (SpawningDone == true) {
+            GameObject gm = GameObject.FindWithTag("GameController");
+            gm.GetComponent<GameManager>().WinGame();
+        }
+    }
+    
     #endregion
 
     #region Spawn Methods
     public void StartSpawning() {
-        for (int i = 0; i < m_Enemies.Length;  i+= 1)
-        {
+        for (int i = 0; i < m_Enemies.Length;  i+= 1) {
+            //Debug.Log("Starting Coroutine");
             StartCoroutine(Spawn(i));
+            //Debug.Log("here");
         }
     }
     private IEnumerator Spawn(int enemyID)
@@ -51,8 +62,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 alwaysSpawn = true;
             }
-            while (alwaysSpawn || i < info.NumberToSpawn)
-            {
+            while (alwaysSpawn || i < info.NumberToSpawn){
                 yield return new WaitForSeconds(info.TimeToNextSpawn);
                 float xVal = m_bounds.x / 2;
                 float yVal = m_bounds.y / 2;
@@ -79,11 +89,13 @@ public class EnemySpawner : MonoBehaviour
                 spawnPos += transform.position;
                 Instantiate(info.EnemyGO, spawnPos, Quaternion.identity);
 
-                if (!alwaysSpawn)
-                {
+                if (!alwaysSpawn){
                     i++;
                 }
             }
+            Debug.Log(m_Enemies.Length);
+            // lastEnemy = m_Enemies[enemyID];
+            // SpawningDone = true;
     }
 
     public void kills() {

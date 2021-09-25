@@ -332,17 +332,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258617494}
   m_CullTransparentMesh: 1
---- !u!114 &776932927 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7559395970191470184, guid: 5ea7e2ce1094e41ab8db4b9df38a31d5, type: 3}
-  m_PrefabInstance: {fileID: 7559395970489196631}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ce79d0e3102f4ba5916635123cbda63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1055446298
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +415,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 776932927}
+      - m_Target: {fileID: 7559395970191470184, guid: 5ea7e2ce1094e41ab8db4b9df38a31d5, type: 3}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -437,7 +426,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1055446301
 MonoBehaviour:
   m_ObjectHideFlags: 0
