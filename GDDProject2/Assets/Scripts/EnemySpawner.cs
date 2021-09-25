@@ -36,8 +36,6 @@ public class EnemySpawner : MonoBehaviour
     }
     private IEnumerator Spawn(int enemyID)
     {
-
-        
             EnemySpawnInfo info = m_Enemies[enemyID];
             int i = 0;
             bool alwaysSpawn = false;

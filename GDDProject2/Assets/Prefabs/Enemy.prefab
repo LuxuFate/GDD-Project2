@@ -148,4 +148,4 @@ MonoBehaviour:
   movespeed: 2
   relic: {fileID: 0}
   Damage: 1
-  m_MaxHealth: 0
+  m_MaxHealth: 1

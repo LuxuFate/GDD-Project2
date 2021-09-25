@@ -16,12 +16,15 @@ public class RelicController : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D coll) {
-        if (c_Health <= 0) {
-            if (coll.CompareTag("Enemy")){
+        if (coll.CompareTag("Enemy")){
+            if (c_Health <= 0) {
                 GameObject gm = GameObject.FindWithTag("GameController");
                 gm.GetComponent<GameManager>().LoseGame();
-            } 
-        }
+            } else {
+                c_Health -= coll.GetComponent<EnemyController>().Damage;
+                coll.GetComponent<EnemyController>().Die();
+            }
+        } 
     }
     
 }

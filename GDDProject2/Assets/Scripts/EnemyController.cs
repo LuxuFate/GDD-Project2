@@ -49,17 +49,13 @@ public class EnemyController : MonoBehaviour
     }
     #endregion
 
-    // #region Attack_function
-    // private void OnCollisionEnter2D(Collision2D collision){
-    // 	if (collision.transform.CompareTag("Player")) {
-    // 		collision.transform.GetComponent<PlayerController>().TakeDamage(Damage);
-    // 	} else if (collision.transform.CompareTag("Relic")) {
-    // 		GameObject gm = GameObject.FindWithTag("GameController");
-    //     	gm.GetComponent<GameManager>().LoseGame();
-    // 	}
-    // 	Die();
-    // }
-    // #endregion
+    #region Attack_function
+    private void OnCollisionEnter2D(Collision2D collision){
+    	if (collision.transform.CompareTag("Player")) {
+    		collision.transform.GetComponent<PlayerController>().TakeDamage(Damage);
+    	} 
+    }
+    #endregion
 
     #region Health methods
     public void DecreaseHealth(float amount) {
@@ -67,13 +63,12 @@ public class EnemyController : MonoBehaviour
         Debug.Log("Decreasing health");
         if (c_Health <= 0) {
             Die();
-            // play animations?
         }
     }
 
     #endregion
 
-    private void Die(){
+    public void Die(){
         Destroy(this.gameObject);
     }
 }

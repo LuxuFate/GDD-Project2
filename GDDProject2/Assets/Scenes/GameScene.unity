@@ -1173,6 +1173,10 @@ PrefabInstance:
       propertyPath: relic
       value: 
       objectReference: {fileID: 811400196}
+    - target: {fileID: 1008533678060319623, guid: 0a5005ad9171f306cb4813bb89900d8a, type: 3}
+      propertyPath: m_MaxHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1008533678060319628, guid: 0a5005ad9171f306cb4813bb89900d8a, type: 3}
       propertyPath: m_Name
       value: Enemy
