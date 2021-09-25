@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator AttackRoutine(PlayerAttackInfo attack){
         //TODO: Decrease enemy health for each enemy
         //TODO: 
-        GameObject go = Instantiate(attack.AbilityGO, transform.forward * attack.Offset.z + transform.right * attack.Offset.y + transform.up * attack.Offset.x, Quaternion.identity); //instantiates the attack
+        GameObject go = Instantiate(attack.AbilityGO, transform.position, Quaternion.identity); //instantiates the attack
         yield return new WaitForSeconds(attack.Duration);
         Destroy(go);
     }
