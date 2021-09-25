@@ -64,6 +64,7 @@ public class EnemyController : MonoBehaviour
     #region Health methods
     public void DecreaseHealth(float amount) {
         c_Health -= amount;
+        Debug.Log("Decreasing health");
         if (c_Health <= 0) {
             Die();
             // play animations?

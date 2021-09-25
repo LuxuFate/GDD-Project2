@@ -80,15 +80,18 @@ public class PlayerController : MonoBehaviour
     private void Attack(){
         attackTimer = attackspeed;
         foreach(PlayerAttackInfo attack in attacks) {
-            if (Input.GetButton(attack.Button)) {
-                if (attack.Cooldown <= 0) {
-                    StartCoroutine(AttackRoutine(attack));
-                    attack.ResetCooldown();
-                    Debug.Log(attack.Cooldown);
-                    break;
-                } else {
-                    attack.Cooldown -= Time.deltaTime;
+            
+            if (attack.Cooldown <= 0) {
+                if (Input.GetButtonDown(attack.Button)) {
+                attack.ResetCooldown();
+                StartCoroutine(AttackRoutine(attack));
+                break;
                 }
+
+            } else {
+                attack.Cooldown -= Time.deltaTime;
+
+                break;
             }
         }
     }
@@ -96,13 +99,9 @@ public class PlayerController : MonoBehaviour
     IEnumerator AttackRoutine(PlayerAttackInfo attack){
         //TODO: Decrease enemy health for each enemy
         //TODO: 
-        Debug.Log("attacking");
-        Debug.Log(attack.AttackName);
-        Debug.Log(attack.Duration);
         GameObject go = Instantiate(attack.AbilityGO, transform.forward * attack.Offset.z + transform.right * attack.Offset.y + transform.up * attack.Offset.x, Quaternion.identity); //instantiates the attack
         yield return new WaitForSeconds(attack.Duration);
         Destroy(go);
-        yield return new WaitForSeconds(attack.Cooldown - attack.Duration);
     }
 
     #endregion

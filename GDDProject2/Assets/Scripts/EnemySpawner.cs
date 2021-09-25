@@ -64,8 +64,6 @@ public class EnemySpawner : MonoBehaviour
                 } else {
                     z = Random.Range(-yVal, -yVal1);
                 }
-                Debug.Log(k);
-                Debug.Log(z);
                 Vector3 spawnPos = new Vector3(
                     k,
                     z,
