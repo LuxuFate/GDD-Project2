@@ -60,7 +60,7 @@ public class EnemyController : MonoBehaviour
     #region Health methods
     public void DecreaseHealth(float amount) {
         c_Health -= amount;
-        Debug.Log("Decreasing health");
+        //Debug.Log("Decreasing health");
         if (c_Health <= 0) {
             Die();
         }
@@ -70,5 +70,6 @@ public class EnemyController : MonoBehaviour
 
     public void Die(){
         Destroy(this.gameObject);
+        
     }
 }

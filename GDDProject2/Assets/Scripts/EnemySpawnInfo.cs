@@ -48,5 +48,9 @@ public class EnemySpawnInfo {
             return m_NumberToSpawn;
         }
     }
+
+    public void SetNumberToSpawn(int num){
+        m_NumberToSpawn = num;
+    }
     #endregion
 }
