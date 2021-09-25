@@ -1142,6 +1142,13 @@ MonoBehaviour:
     m_Offset: {x: 0, y: 0.5, z: 0}
     m_Cooldown: 0.5
     m_Duration: 0.3
+  - m_name: GroundPoiund
+    m_Button: Fire2
+    m_TriggerName: GroundPound
+    m_AbilityGO: {fileID: 3964755871716761215, guid: ee3e1856bebbd50b99dc8cbb5607ed56, type: 3}
+    m_Offset: {x: 0, y: 0.5, z: 0}
+    m_Cooldown: 2
+    m_Duration: 0.3
   movespeed: 4
   Damage: 1
   attackspeed: 1
