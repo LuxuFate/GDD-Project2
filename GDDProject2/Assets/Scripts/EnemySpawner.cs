@@ -41,9 +41,6 @@ public class EnemySpawner : MonoBehaviour
     }
     private IEnumerator Spawn(int enemyID)
     {
-            if (m_NumberKilled >= 50) {
-                cr_GM.GetComponent<GameManager>().WinGame();
-            }
             EnemySpawnInfo info = m_Enemies[enemyID];
             int i = 0;
             bool alwaysSpawn = false;
@@ -53,6 +50,9 @@ public class EnemySpawner : MonoBehaviour
             }
             while (alwaysSpawn || i < info.NumberToSpawn)
             {
+                if (m_NumberKilled >= 50) {
+                    cr_GM.GetComponent<GameManager>().WinGame();
+                }
                 yield return new WaitForSeconds(info.TimeToNextSpawn);
                 float xVal = m_bounds.x / 2;
                 float yVal = m_bounds.y / 2;
