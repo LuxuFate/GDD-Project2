@@ -1,4 +1,5 @@
-# GDDProject2
+# GDD Project 2
+
 
 Instructions to play:
 
